@@ -20,5 +20,21 @@
     <!-- Optional link back to your site -->
     <p><a href="/">Go to homepage</a></p>
   </div>
+  <script>
+    (function () {
+      try {
+        var params = new URLSearchParams(window.location.search || "");
+        var next = params.get("next");
+        // Only redirect to http(s) targets for safety
+        if (next && /^https?:\/\//i.test(next)) {
+          setTimeout(function () {
+            location.replace(next);
+          }, 400);
+        }
+      } catch (e) {
+        // no-op
+      }
+    })();
+  </script>
 </body>
 </html>
